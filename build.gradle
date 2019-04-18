@@ -1,0 +1,29 @@
+group 'com.agent'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile group: 'io.earcam.wrapped', name: 'com.sun.tools.attach', version: '1.8.0_jdk8u162-b12'
+    compile group: 'javassist', name: 'javassist', version: '3.12.1.GA'
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.26'
+}
+
+jar {
+    manifest {
+        attributes(
+                'Premain-Class': 'StaticAgentApplication',
+                'Agent-Class': 'DynamicAgentApplication',
+                'Can-Redefine-Classes': true,
+                'Can-Retransform-Classes': true,
+                'Permissions': 'all-permissions'
+        )
+    }
+}
