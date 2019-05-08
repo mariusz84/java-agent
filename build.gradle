@@ -19,6 +19,7 @@ dependencies {
 jar {
     manifest {
         attributes(
+                'Main-Class': 'HelloJNI',
                 'Premain-Class': 'StaticAgentApplication',
                 'Agent-Class': 'DynamicAgentApplication',
                 'Can-Redefine-Classes': true,
